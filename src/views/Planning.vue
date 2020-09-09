@@ -13,7 +13,7 @@
                     12 122 из 14 0000
                 </p>
                 <div class="progress">
-                    <div class="determinate green" style="width:50%"></div>
+                    <div class="determinate green" style="width:40%"></div>
                 </div>
             </div>
         </section>
@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'Planning'
+    name: 'Planning'
+
 }
 </script>
-
