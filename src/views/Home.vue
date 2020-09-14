@@ -9,7 +9,10 @@
     </div>
     <Loader v-if='loading'></Loader>
     <div v-else class="row">
-      <home-bill></home-bill>
+      <home-bill
+       :rates='currency.rates'
+      
+      ></home-bill>
       <home-currency></home-currency>
     </div>
   </div>

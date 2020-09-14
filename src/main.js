@@ -7,6 +7,7 @@ import router from './router';
 import store from './store';
 import messagePlugin from './utils/message.plugin';
 import dateFilter from '@/filter/date.filter';
+import currencyFilter from './filter/currency.filter';
 import dir from './mytest/test'
 import 'materialize-css/dist/js/materialize';
 
@@ -20,6 +21,7 @@ Vue.use(messagePlugin)
 Vue.directive('colored', dir)
 Vue.use(Vuelidate)
 Vue.filter('dateFilter', dateFilter);
+Vue.filter('currencyFilter', currencyFilter);
 Vue.component('Loader', Loader)
 
 firebase.initializeApp({
