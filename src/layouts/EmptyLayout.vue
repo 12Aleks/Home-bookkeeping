@@ -15,10 +15,10 @@
       }
     },
     watch: {
-      error(fbError) {
+        error(fbError) {
         console.log(fbError)
         this.$error(message[fbError.code] || 'Что-то пошло не так' )
-      }
+        }
     }
   }
 </script>
