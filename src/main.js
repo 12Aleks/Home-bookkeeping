@@ -33,7 +33,7 @@ firebase.initializeApp({
 
 let app;
 
-firebase.auth().onAuthStateChanged( () => {
+firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     app = new Vue({
       router,
