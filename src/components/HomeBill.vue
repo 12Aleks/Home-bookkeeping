@@ -18,7 +18,8 @@
 export default {
   props: ['rates'],
   data: () => ({
-    currencies: ["PLN", "USD", "EUR", "UAH"]
+    currencies: ["PLN", "USD", "EUR", "UAH"],
+    test: ''
   }),
   computed: {
     base() {
