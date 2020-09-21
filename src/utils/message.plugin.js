@@ -1,11 +1,13 @@
 import M from 'materialize-css'
+/*eslint-disable*/
 export default {
-    install(Vue) {
-        Vue.prototype.$message = function(html) {
-            M.toast({ html })
-        }
-        Vue.prototype.$error = function(html) {
-            M.toast({ html: `[Ошибка]: ${html}` })
-        }
+  install(Vue, options) {
+    Vue.prototype.$message = function(html) {
+      M.toast({html})
     }
+
+    Vue.prototype.$error = function(html) {
+      M.toast({html: `[Ошибка]: ${html}`})
+    }
+  }
 }
