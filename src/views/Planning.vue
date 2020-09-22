@@ -6,7 +6,9 @@
             <h4>12 212</h4>
         </div>
 
-        <section>
+        <loader v-if="loading"></loader>
+
+        <section v-else>
             <div>
                 <p>
                     <strong>Девушка:</strong>
@@ -23,7 +25,17 @@
 
 <script>
 export default {
-    name: 'Planning'
+    name: 'Planning',
+    data: () => ({
+      loading: true,
+      categories: []
+    }),
+    async mounted(){
+      // const records = await this.$store.dispatch('fetchRecords')
+      // const categories = await this.$store.dispatch('fetchCategories')
+
+      this.loading = false
+    }
 
 }
 </script>
