@@ -11,6 +11,7 @@ import currencyFilter from './filter/currency.filter';
 import dir from './mytest/test'
 import 'materialize-css/dist/js/materialize';
 
+import  tooltipDirective from './derectives/tooltip.directive'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
@@ -18,6 +19,7 @@ import 'firebase/database';
 
 Vue.config.productionTip = false
 Vue.use(messagePlugin)
+Vue.directive('tooltipe', tooltipDirective)
 Vue.directive('colored', dir)
 Vue.use(Vuelidate)
 Vue.filter('dateFilter', dateFilter);
