@@ -8,44 +8,43 @@
         <div class="history-chart">
             <canvas></canvas>
         </div>
+        <Loader v-if="loading"></Loader>
 
-        <section>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Сумма</th>
-                        <th>Дата</th>
-                        <th>Категория</th>
-                        <th>Тип</th>
-                        <th>Открыть</th>
-                    </tr>
-                </thead>
+        <p class="center" v-else-if="!records.length">Записей пока нет <router-link to="/record">Добавить</router-link></p>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1212</td>
-                        <td>12.12.32</td>
-                        <td>name</td>
-                        <td>
-                            <span class="white-text badge red">Расход</span>
-                        </td>
-                        <td>
-                            <button class="btn-small btn">
-                                <i class="material-icons">open_in_new</i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <section v-else>
+          <history-table :records="records"></history-table>
         </section>
     </div>
 </div>
 </template>
 
-<script>
+<script>/*eslint-disable*/
+import HistoryTable from "../components/HistoryTable";
 export default {
-    name: 'History'
+    name: 'History',
+    data: () => ({
+      loading: true,
+      records: [],
+      categories: []
+    }),
+    async mounted(){
+      // this.records = this.$store.dispatch('fetchRecords')
+      const records = await this.$store.dispatch('fetchRecords')
+      this.categories = await this.$store.dispatch('fetchCategories')
+      this.records = records.map(record => {
+        return {
+          ...record,
+          categoryName: this.categories.find(c => c.id === record.categoryId).title,
+          typeClass: record.type === 'income'? 'green' : 'red',
+          typeText: record.type === 'income'? 'Доход': 'Расход'
+        }
+      })
+
+      this.loading = false
+    },
+    components:{
+      HistoryTable
+    }
 }
 </script>

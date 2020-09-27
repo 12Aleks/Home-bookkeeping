@@ -33,7 +33,7 @@ const router = new VueRouter ({
     component: () =>
       import('../views/Register.vue')
   }, {
-    path: '/detal',
+    path: '/detail/:id',
     name: 'DetalRecord',
     meta: {
       layout: 'main', auth: true
