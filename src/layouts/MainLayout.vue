@@ -49,7 +49,6 @@
     },
     watch: {
       error(fbError) {
-        console.log(fbError)
         this.$error(message[fbError.code] || 'Что-то пошло не так' )
       }
     }
