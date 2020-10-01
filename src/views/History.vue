@@ -21,6 +21,7 @@
                     :next-text="'Вперед'"
                     :container-class="'pagination'"
                     :page-class="'waves-effect'"
+                    v-model="page"
           ></Paginate>
         </section>
     </div>
