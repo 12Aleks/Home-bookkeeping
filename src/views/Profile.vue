@@ -12,6 +12,17 @@
                 <span class="helper-text invalid">name</span>
             </div>
 
+
+           <div class="switch">
+             <label>
+              English
+               <input type="checkbox">
+               <span class="lever"></span>
+              Russian
+             </label>
+           </div>
+
+
             <button class="btn waves-effect waves-light" type="submit">
                 Обновить
                 <i class="material-icons right">send</i>
@@ -23,6 +34,13 @@
 
 <script>
 export default {
-  name: 'Profile'
+  name: 'Profile',
+
 }
 </script>
+
+<style scoped>
+ .switch{
+   margin-bottom: 2rem;
+ }
+</style>
