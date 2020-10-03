@@ -7,7 +7,7 @@
 
         <form class="form">
             <div class="input-field">
-                <input id="description" type="text">
+                <input id="description" type="text" v-model="name">
                 <label for="description">Имя</label>
                 <span class="helper-text invalid">name</span>
             </div>
@@ -33,9 +33,26 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+import M from 'materialize-css'
+
 export default {
   name: 'Profile',
+  data: () => ({
+    name: ''
+  }),
+  mounted(){
+      this.name = this.infoUser.name;
+      setTimeout(() => {
+        M.updateTextFields()
+      }, 0)
 
+  },
+  computed:{
+    ...mapGetters({
+      infoUser : 'info'
+    })
+  }
 }
 </script>
 
