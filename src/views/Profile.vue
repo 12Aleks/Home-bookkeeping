@@ -5,11 +5,13 @@
             <h3>Профиль</h3>
         </div>
 
-        <form class="form">
+        <form class="form" @submit.prevent="submitHandler">
             <div class="input-field">
-                <input id="description" type="text" v-model="name">
+                <input id="description" type="text" v-model="name" :class="{invalid: $v.name.$dirty && !$v.name.required}">
                 <label for="description">Имя</label>
-                <span class="helper-text invalid">name</span>
+                <small class="helper-text invalid"
+                v-if="$v.name.$dirty && !$v.name.required"
+                >Введите имя</small>
             </div>
 
 
@@ -32,15 +34,19 @@
 </div>
 </template>
 
-<script>
-import {mapGetters} from 'vuex'
+<script>/*eslint-disable*/
+import {mapGetters, mapActions} from 'vuex'
 import M from 'materialize-css'
+import {required} from 'vuelidate/lib/validators'
 
 export default {
   name: 'Profile',
   data: () => ({
     name: ''
   }),
+  validations: {
+    name: {required}
+  },
   mounted(){
       this.name = this.infoUser.name;
       setTimeout(() => {
@@ -52,6 +58,21 @@ export default {
     ...mapGetters({
       infoUser : 'info'
     })
+  },
+  methods: {
+    ...mapActions(["updateInfo"]),
+    async submitHandler() {
+      if(this.$v.$invalid){
+        this.$v.$touch()
+        return
+      }
+      try{
+       await this.updateInfo({
+         name: this.name
+       })
+      }catch(e){}
+
+    }
   }
 }
 </script>
