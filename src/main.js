@@ -7,8 +7,11 @@ import Loader from './components/app/Loader.vue'
 import router from './router';
 import store from './store';
 import messagePlugin from './utils/message.plugin';
+
 import dateFilter from '@/filter/date.filter';
 import currencyFilter from './filter/currency.filter';
+import localeFilter from './filter/localize.filter';
+
 import dir from './mytest/test'
 import 'materialize-css/dist/js/materialize';
 
@@ -20,11 +23,16 @@ import 'firebase/database';
 
 Vue.config.productionTip = false
 Vue.use(messagePlugin)
+Vue.use(Vuelidate)
+
 Vue.directive('tooltipe', tooltipDirective)
 Vue.directive('colored', dir)
-Vue.use(Vuelidate)
+
+
 Vue.filter('dateFilter', dateFilter);
 Vue.filter('currencyFilter', currencyFilter);
+Vue.filter('localeFilter', localeFilter);
+
 Vue.component('Loader', Loader)
 Vue.component('Paginate', Paginate)
 
