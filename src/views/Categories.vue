@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="page-title">
-        <h3>Категории</h3>
+        <h3>{{'Categories' | localizeFilter}}</h3>
     </div>
     <section>
         <loader v-if="loading"></loader>
@@ -14,7 +14,7 @@
             :key="categories.length + updateCount"
             @updated="updateCategories"
           />
-            <p v-else class="center">Категорий пока нет</p>
+            <p v-else class="center">{{'NoCategories'| localizeFilter}}</p>
         </div>
     </section>
 </div>
@@ -26,6 +26,11 @@
   import CategoryEdit from '../components/CategoryEdit'
 export default {
   name: 'Categories',
+  metaInfo(){
+    return{
+      title: this.$title('Categories')
+    }
+  },
   data: () => ({
     categories: [],
     loading: true,

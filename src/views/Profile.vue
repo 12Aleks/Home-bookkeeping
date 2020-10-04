@@ -38,9 +38,15 @@
 import {mapGetters, mapActions} from 'vuex'
 import M from 'materialize-css'
 import {required} from 'vuelidate/lib/validators'
+import localizeFilter from "../filter/localize.filter";
 
 export default {
   name: 'Profile',
+  metaInfo(){
+    return{
+      title: this.$title('ProfileTitle')
+    }
+  },
   data: () => ({
     name: '',
     isRuLocale: true

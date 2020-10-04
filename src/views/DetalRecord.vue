@@ -32,6 +32,11 @@
 <script>/*eslint-disable*/
   export default {
     name: 'DetalRecord',
+    metaInfo(){
+      return{
+        title: this.$title('Detail_title')
+      }
+    },
     data:() => ({
       record: null,
       loading: true

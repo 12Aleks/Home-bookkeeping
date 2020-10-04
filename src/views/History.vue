@@ -2,7 +2,7 @@
 <div>
     <div>
         <div class="page-title">
-            <h3>История записей</h3>
+            <h3>{{'History_Title'| localizeFilter}}</h3>
         </div>
 
         <div class="history-chart">
@@ -10,15 +10,15 @@
         </div>
         <Loader v-if="loading"></Loader>
 
-        <p class="center" v-else-if="!records.length">Записей пока нет <router-link to="/record">Добавить</router-link></p>
+        <p class="center" v-else-if="!records.length">{{'NoRecords'| localizeFilter}}<router-link to="/record">{{'AddFirst'| localizeFilter}}</router-link></p>
 
         <section v-else>
           <history-table :records="items"></history-table>
 
           <Paginate :page-count="pageCount"
                     :click-handler="pageChangeHandler"
-                    :prev-text="'Назад'"
-                    :next-text="'Вперед'"
+                    :prev-text="'Back' | localizeFilter"
+                    :next-text="'Forward' | localizeFilter"
                     :container-class="'pagination'"
                     :page-class="'waves-effect'"
                     v-model="page"
@@ -32,11 +32,16 @@
 import paginationMixins from '../mixins/pagination.mixin'
 import HistoryTable from "../components/HistoryTable";
 import {Pie} from 'vue-chartjs'
-
+import localizeFilter from "../filter/localize.filter";
 
 export default {
     name: 'History',
     extends: Pie,
+  metaInfo(){
+    return{
+      title: this.$title('Menu_History')
+    }
+  },
     data: () => ({
       loading: true,
       records: []
@@ -65,7 +70,7 @@ export default {
         this.renderChart({
             labels: categories.map((c) => c.title ),
             datasets: [{
-              label: 'Расходы по категориям',
+              label: localizeFilter('CostsForCategories'),
               data: categories.map( (c) => {
                 return this.records.reduce((total, r) => {
                   if(r.categoryId === c.id && r.type ==='outcome'){

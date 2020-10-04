@@ -7,6 +7,8 @@ import Loader from './components/app/Loader.vue'
 import router from './router';
 import store from './store';
 import messagePlugin from './utils/message.plugin';
+import titlePlugin from './utils/title.plugin';
+import VueMeta from 'vue-meta'
 
 import dateFilter from '@/filter/date.filter';
 import currencyFilter from './filter/currency.filter';
@@ -22,7 +24,9 @@ import 'firebase/database';
 
 
 Vue.config.productionTip = false
+Vue.use(VueMeta)
 Vue.use(messagePlugin)
+Vue.use(titlePlugin)
 Vue.use(Vuelidate)
 
 Vue.directive('tooltipe', tooltipDirective)
