@@ -10,7 +10,7 @@ import messagePlugin from './utils/message.plugin';
 
 import dateFilter from '@/filter/date.filter';
 import currencyFilter from './filter/currency.filter';
-import localeFilter from './filter/localize.filter';
+import localizeFilter from './filter/localize.filter';
 
 import dir from './mytest/test'
 import 'materialize-css/dist/js/materialize';
@@ -31,7 +31,7 @@ Vue.directive('colored', dir)
 
 Vue.filter('dateFilter', dateFilter);
 Vue.filter('currencyFilter', currencyFilter);
-Vue.filter('localeFilter', localeFilter);
+Vue.filter('localizeFilter', localizeFilter);
 
 Vue.component('Loader', Loader)
 Vue.component('Paginate', Paginate)

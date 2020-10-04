@@ -3,7 +3,8 @@
     <Loader v-if="loading"></Loader>
     <div class="app-main-layout" v-else>
       <navbar @click="isOpen = !isOpen"></navbar>
-      <sidebar :value="isOpen"></sidebar>
+
+      <sidebar :value="isOpen" :key="locale"></sidebar>
 
       <main class="app-content" :class="{full : !isOpen}">
         <div class="app-page">
@@ -45,9 +46,15 @@
     computed: {
       error() {
         return this.$store.getters.error
+      },
+      locale() {
+        return this.$store.getters.info.locale
       }
     },
     watch: {
+      // locale(){
+      //
+      // },
       error(fbError) {
         this.$error(message[fbError.code] || 'Что-то пошло не так' )
       }
