@@ -1,4 +1,5 @@
 {
+  "Project_Name": "Домашняя бухгалтерия",
   "ProfileTitle": "Профиль",
   "Message_EnterName": "Введите имя",
   "Update": "Обновить",
@@ -8,6 +9,7 @@
   "Menu_Planning" :"Планирование",
   "Menu_History" :"История",
   "Menu_Count":"Счет",
+  "Edit": "Редактировать категорию",
   "Выйти": "Выйти",
   "Title": "Название",
   "Limit": "Лимит",
@@ -55,6 +57,7 @@
   "Register": "Зарегистрироваться",
   "AcceptRules": "С правилами согласен",
   "CreateNewRecord": "Создать новую запись",
+  "CreateNewCategory": "Создать новую категорию",
   "Logout": "Вы вышли из системы",
   "FirstLogin": "Для начала войдите в систему",
   "NoUserWithEmail": "Пользователя с таким email не существует",

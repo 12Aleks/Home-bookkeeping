@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Сумма</th>
-      <th>Дата</th>
-      <th>Категория</th>
-      <th>Тип</th>
-      <th>Открыть</th>
+      <th>{{'Amount'| localizeFilter}}</th>
+      <th>{{'Date'|localizeFilter}}</th>
+      <th>{{'Category'|localizeFilter}}</th>
+      <th>{{'Type'|localizeFilter}}</th>
+      <th>{{'Open'|localizeFilter}}</th>
     </tr>
     </thead>
 
@@ -21,7 +21,7 @@
         <span class="white-text badge" :class="[record.typeClass]">{{record.typeText}}</span>
       </td>
       <td>
-        <button v-tooltipe="'Открыть запись'" class="btn-small btn" @click="$router.push('/detail/' + record.id)">
+        <button v-tooltipe="'OpenRecord'" class="btn-small btn" @click="$router.push('/detail/' + record.id)">
           <i class="material-icons">open_in_new</i>
         </button>
       </td>

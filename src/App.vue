@@ -9,7 +9,6 @@
 <script>
 import EmptyLayout from '@/layouts/EmptyLayout'
 import MainLayout from '@/layouts/MainLayout'
-import TestLayout from '@/layouts/TestLayout'
 
 export default {
     name: 'App',
@@ -21,7 +20,6 @@ export default {
     components: {
         EmptyLayout,
         MainLayout,
-        TestLayout
     }
 }
 </script>

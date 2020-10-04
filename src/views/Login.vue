@@ -2,7 +2,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">Домашняя бухгалтерия</span>
+      <span class="card-title">{{'Project_Name'| localizeFilter}}</span>
       <div class="input-field">
         <input
           id="email"
@@ -18,12 +18,12 @@
         <small
           class="helper-text invalid"
           v-if="$v.email.$dirty && !$v.email.required"
-          >Введите данные в поле Email</small
+          >{{'Message_EmailRequired'| localizeFilter}}</small
         >
         <small
           class="helper-text invalid"
           v-else-if="$v.email.$dirty && !$v.email.email"
-          >Введите корректный Email</small
+          >{{'Message_EmailValid'| localizeFilter}}</small
         >
       </div>
       <div class="input-field">
@@ -41,12 +41,12 @@
         <small
           class="helper-text invalid"
           v-if="$v.password.$dirty && !$v.password.required"
-          >Введите данные в поле Password</small
+          >{{'Message_EnterPassword'| localizeFilter}}</small
         >
         <small
           class="helper-text invalid"
           v-else-if="$v.password.$dirty && !$v.password.minLength"
-          >Минимальная длина пароля
+          >{{'Message_MinLength'| localizeFilter}}
           {{ $v.password.$params.minLength.min }} символов. Введено
           {{ password.length }}</small
         >
@@ -55,13 +55,13 @@
     <div class="card-action">
       <div>
         <button class="btn waves-effect waves-light auth-submit" type="submit">
-          Войти
+          {{'Login'|localizeFilter}}
           <i class="material-icons right">send</i>
         </button>
       </div>
       <p class="center">
-        Нет аккаунта?
-        <router-link to="/register">Зарегистрироваться</router-link>
+        {{'NoAccount'|localizeFilter}}
+        <router-link to="/register">{{'Register'|localizeFilter}}</router-link>
       </p>
     </div>
   </form>
@@ -73,6 +73,11 @@ import {email, required, minLength} from 'vuelidate/lib/validators'
 import messages from '../utils/message'
 export default {
   name: "Login",
+  metaInfo() {
+    return {
+      title: this.$title('Login')
+    }
+  },
   data: () => ({
     email: '',
     password: ''

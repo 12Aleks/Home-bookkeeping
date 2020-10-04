@@ -2,17 +2,22 @@
 <div>
     <div>
         <div class="page-title">
-            <h3>Планирование</h3>
+            <h3>{{'Menu_Planning'|localizeFilter}}</h3>
             <h4>{{info.bill | currencyFilter('PLN')}}</h4>
         </div>
 
         <loader v-if="loading"></loader>
 
+      <p class="center" v-else-if="!categories.length">
+        {{'NoCategories'|localizeFilter}}.
+        <router-link to="/categories">{{'AddFirst'|localizeFilter}}</router-link>
+      </p>
+
         <section v-else>
             <div v-for="cat of categories" :key="cat.id">
                 <p>
                     <strong>{{cat.title}}:</strong>
-                    {{cat.spend | currencyFilter}} из {{cat.limit | currencyFilter}}
+                    {{cat.spend | currencyFilter}} {{'Of'|localizeFilter}}  {{cat.limit | currencyFilter}}
                 </p>
                 <div class="progress" v-tooltipe="cat.tooltip">
                     <div class="determinate"
@@ -32,6 +37,11 @@
 export default {
     /*eslint-disable*/
     name: 'Planning',
+  metaInfo(){
+    return{
+      title: this.$title('Menu_Planning')
+    }
+  },
     data: () => ({
       loading: true,
       categories: []

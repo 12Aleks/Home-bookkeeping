@@ -2,13 +2,13 @@
   <div>
     <div>
       <div class="page-title">
-        <h3>Новая запись</h3>
+        <h3>{{'Menu_New_record'|localizeFilter}}</h3>
       </div>
 
       <loader v-if="loading"></loader>
 
-      <p v-else-if="!categories.length" class="center">Категорий пока не существует.
-        <router-link to="/categories"> Добавить новую категорию</router-link>
+      <p v-else-if="!categories.length" class="center">   {{'NoCategories'| localizeFilter}}.
+        <router-link to="/categories">{{'AddFirst'| localizeFilter}}</router-link>
       </p>
 
       <form v-else class="form" @submit.prevent="handlerSubmit">
@@ -16,40 +16,40 @@
           <select ref="select" v-model="category">
             <option v-for="c in categories" :key='c.id' :value="c.id">{{c.title}}</option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{'SelectCategory'|localizeFilter}}</label>
         </div>
 
         <p>
           <label>
             <input class="with-gap" name="type" type="radio" value="income" v-model="type"/>
-            <span>Доход</span>
+            <span>{{'Income'|localizeFilter}}</span>
           </label>
         </p>
 
         <p>
           <label>
             <input class="with-gap" name="type" type="radio" value="outcome" v-model="type"/>
-            <span>Расход</span>
+            <span>{{'Outcome'|localizeFilter}}</span>
           </label>
         </p>
 
         <div class="input-field">
           <input id="amount" type="number" v-model.number="amount"
                  :class="{invalid: $v.amount.$dirty && !$v.amount.minValue}">
-          <label for="amount">Сумма</label>
-          <span v-if="$v.amount.$dirty && !$v.amount.minValue " class="helper-text invalid">Минимальное значение {{$v.amount.$params.minValue.min}}</span>
+          <label for="amount">{{'Amount'|localizeFilter}}</label>
+          <span v-if="$v.amount.$dirty && !$v.amount.minValue " class="helper-text invalid">{{'Message_MinLength'|localizeFilter}} {{$v.amount.$params.minValue.min}}</span>
         </div>
 
         <div class="input-field">
           <input id="description" type="text" v-model.trim="description"
                  :class="{invalid: $v.description.$dirty && !$v.description.required}">
-          <label for="description">Описание</label>
+          <label for="description">{{'Description'|  localizeFilter}}</label>
           <span class="helper-text invalid"
-                v-if="$v.description.$dirty && !$v.description.required">Введите описание</span>
+                v-if="$v.description.$dirty && !$v.description.required">{{'Message_EnterDescription'|localizeFilter}}</span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Создать
+          {{'CreateNewRecord'| localizeFilter}}
           <i class="material-icons right">send</i>
         </button>
       </form>
@@ -75,6 +75,11 @@
             amount: 1,
             description: ''
         }),
+      metaInfo() {
+        return {
+          title: this.$title('Menu_New_record')
+        }
+      },
         validations: {
             amount: {minValue: minValue(1)},
             description: {required}

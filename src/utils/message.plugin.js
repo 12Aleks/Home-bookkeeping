@@ -1,4 +1,5 @@
 import M from 'materialize-css'
+import localizeFilter from "../filter/localize.filter";
 /*eslint-disable*/
 export default {
   install(Vue, options) {
@@ -7,7 +8,7 @@ export default {
     }
 
     Vue.prototype.$error = function(html) {
-      M.toast({html: `[Ошибка]: ${html}`})
+      M.toast({ html: `[${localizeFilter('Error')}]: ${html}` })
     }
   }
 }

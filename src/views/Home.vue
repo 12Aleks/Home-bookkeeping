@@ -30,6 +30,11 @@ export default {
    loading: true,
    currency: null
   }),
+  metaInfo() {
+    return {
+      title: this.$title('Menu_Count')
+    }
+  },
  async mounted(){
   this.currency = await this.$store.dispatch('fetchCurrency')
   this.loading = false

@@ -63,7 +63,10 @@ export default {
             ...record,
             categoryName: categories.find(c => c.id === record.categoryId).title,
             typeClass: record.type === 'income'? 'green' : 'red',
-            typeText: record.type === 'income'? 'Доход': 'Расход'
+            typeText:
+              record.type === 'income'
+                ? localizeFilter('Income')
+                : localizeFilter('Outcome')
           }
         }))
 

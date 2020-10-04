@@ -14,7 +14,6 @@ import dateFilter from '@/filter/date.filter';
 import currencyFilter from './filter/currency.filter';
 import localizeFilter from './filter/localize.filter';
 
-import dir from './mytest/test'
 import 'materialize-css/dist/js/materialize';
 
 import  tooltipDirective from './derectives/tooltip.directive'
@@ -30,7 +29,7 @@ Vue.use(titlePlugin)
 Vue.use(Vuelidate)
 
 Vue.directive('tooltipe', tooltipDirective)
-Vue.directive('colored', dir)
+
 
 
 Vue.filter('dateFilter', dateFilter);
